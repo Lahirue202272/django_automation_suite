@@ -15,3 +15,16 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.customer_name
+
+class Employee(models.Model):
+    employee_id = models.IntegerField()
+    employee_name = models.CharField(max_length=25)
+    designation = models.CharField(max_length=25)
+    salary = models.DecimalField(decimal_places=2, max_digits=10)
+    retirement = models.DecimalField(decimal_places=2, max_digits=10)
+    other_benefits = models.DecimalField(decimal_places=2, max_digits=10)
+    total_benefits = models.DecimalField(decimal_places=2, max_digits=10)
+    total_composition = models.DecimalField(decimal_places=2, max_digits=10)
+
+    def __str__(self):
+        return self.employee_name+'-'+self.designation

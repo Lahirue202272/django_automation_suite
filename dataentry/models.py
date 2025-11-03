@@ -24,7 +24,7 @@ class Employee(models.Model):
     retirement = models.DecimalField(decimal_places=2, max_digits=10)
     other_benefits = models.DecimalField(decimal_places=2, max_digits=10)
     total_benefits = models.DecimalField(decimal_places=2, max_digits=10)
-    total_composition = models.DecimalField(decimal_places=2, max_digits=10)
+    total_compensation = models.DecimalField(decimal_places=2, max_digits=10)
 
     def __str__(self):
         return self.employee_name+'-'+self.designation

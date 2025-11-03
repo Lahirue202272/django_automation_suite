@@ -1,5 +1,7 @@
 from django.apps import apps
 from django.core.management.base import CommandError
+from django.core.mail import EmailMessage
+from django.conf import settings
 import csv 
 from django.db import DataError
 
@@ -46,3 +48,11 @@ def check_csv_errors(file_path,model_name):
     
     return model
     
+
+def send_email_notification(mail_subject,message,to_email):
+    try:
+        from_email = settings.DEFAULT_FROM_EMAIL
+        mail = EmailMessage(mail_subject, message, from_email, to=[to_email])
+        mail.send()
+    except Exception as e:
+        raise e

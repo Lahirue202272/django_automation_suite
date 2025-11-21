@@ -1,5 +1,7 @@
-{% extends 'base.html'%} {% block content %}
+{% extends 'base.html'%} 
+{% block content %}
 <div class="container" style="padding: 50px">
+  {% if user.is_authenticated %}
   <h2 class="text-center">Automate The Boring Stuff With Django</h2>
   <div class="row pt-5">
     <!-- Import data -->
@@ -89,5 +91,20 @@
       </a>
     </div>
   </div>
+  {% else %}
+  <div class="home-info">
+    <h2 class="text-center"> Automate the Boring Stuff with Django </h2>
+    <p class="lead text-center text-muted ">
+      This project demonstrates how to automate common web tasks using Django.
+      Features include data import/export, bulk emailing, image compression,
+      and web scraping. Register or login to explore the automation tools!
+    </p>
+    <div style="display: flex; justify-content: center;">
+      <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+      &nbsp;<a href="{% url 'register' %}" class="btn btn-success">Register</a>
+    </div>
+  </div>
+  {% endif %}
 </div>
+
 {% endblock %}
